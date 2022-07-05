@@ -67,6 +67,20 @@
                 return $th->getMessage();
             }
         }
+
+        public function mensajesCrud($mensaje) {
+            $msg = '';
+
+            if ($mensaje == 'insert') {
+                $msg = 'swal("Excelente!", "Agregado con exito!", "success")';
+            } else if ($mensaje == 'update') {
+                $msg = 'swal("Excelente!", "Actualizado con exito!", "info")';
+            } else if ($mensaje == 'delete') {
+                $msg = 'swal("Excelente!", "Eliminado con exito!", "warning")';
+            }
+
+            return $msg;
+        }
     }
 
 ?>

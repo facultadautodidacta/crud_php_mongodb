@@ -1,4 +1,5 @@
-<?php 
+<?php session_start();
+
     include "../clases/Conexion.php";
     include "../clases/Crud.php";
 
@@ -14,6 +15,7 @@
     $respuesta = $Crud->insertarDatos($datos);
 
     if ($respuesta->getInsertedId() > 0) {
+        $_SESSION['mensaje_crud'] = 'insert';
         header("location:../index.php"); 
     } else {
         print_r($respuesta);
