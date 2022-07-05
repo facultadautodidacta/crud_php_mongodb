@@ -1,4 +1,15 @@
-<?php include "./header.php"; ?>
+
+
+
+<?php
+    include "./clases/Conexion.php";
+    include "./clases/Crud.php";
+    include "./header.php"; 
+
+    $crud = new Crud();
+    $id = $_POST['id'];
+    $datos = $crud->obtenerDocumento($id);
+?>
 
 <div class="container">
         <div class="row">
@@ -20,10 +31,10 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><?php echo $datos->paterno; ?></td>
+                                <td><?php echo $datos->materno; ?></td>
+                                <td><?php echo $datos->nombre; ?></td>
+                                <td><?php echo $datos->fecha_nacimiento; ?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -34,7 +45,8 @@
                             Una vez eliminado no podra ser recuperado!!
                         </p>
                     </div>
-                    <form action="" method="post">
+                    <form action="./procesos/eliminar.php" method="POST">
+                        <input type="text" name="id" value="<?php echo $datos->_id; ?>" hidden>
                         <button class="btn btn-danger">
                             <i class="fa-solid fa-user-xmark"></i> Eliminar
                         </button>
